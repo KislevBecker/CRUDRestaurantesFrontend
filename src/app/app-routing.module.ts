@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import { RestaurantListComponent } from './components/restaurant-list/restaurant-list.component';
+import { Routes, RouterModule } from '@angular/router';
+import { RestaurantsListComponent } from './components/restaurants-list/restaurants-list.component';
 import { RestaurantDetailsComponent } from './components/restaurant-details/restaurant-details.component';
 import { AddRestaurantComponent } from './components/add-restaurant/add-restaurant.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'restaurants', pathMatch: 'full' },
-  { path: 'restaurantes', component: RestaurantListComponent },
-  { path: 'restaurantes/:id', component: RestaurantDetailsComponent },
+  { path: 'restaurants', component: RestaurantsListComponent },
+  { path: 'restaurants/:id', component: RestaurantDetailsComponent },
   { path: 'add', component: AddRestaurantComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

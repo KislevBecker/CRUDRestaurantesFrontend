@@ -1,20 +1,19 @@
-
 <div>
-  <p>
-    <mat-toolbar>
-      <span>My Application</span>
-    </mat-toolbar>
-  </p>
-  
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+      <img src="../assets/r.png/" class="image-navtop">
+    </a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="restaurants" class="nav-link">Conoce nuestros restaurantes</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add" class="nav-link">Agregar más restaurantes</a>
+      </li>
+    </div>
+  </nav>
 
   <div class="container mt-3">
     <router-outlet></router-outlet>
   </div>
 </div>
-
-
-
-
-
-
-

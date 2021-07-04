@@ -3,13 +3,11 @@ import { HttpClient } from '@angular/common/http';
 
 const baseUrl = 'http://localhost:8080/api/restaurants';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
 
-  
   constructor(private http: HttpClient) { }
 
   getAll() {
