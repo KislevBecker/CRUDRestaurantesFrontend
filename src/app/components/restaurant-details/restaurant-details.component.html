@@ -1,5 +1,5 @@
 <div *ngIf="currentRestaurant" class="edit-form">
-  <h4>Tutorial</h4>
+  <h4>Restaurante</h4>
   <form>
     <div class="form-group">
       <label for="title">Name</label>
@@ -65,7 +65,7 @@
 
     <div class="form-group">
       <label><strong>Status:</strong></label>
-      {{ currentRestaurant.published ? "Published" : "Pending" }}
+      {{ currentRestaurant.published ? "Publicado" : "Pendiente" }}
     </div>
   </form>
 
@@ -74,27 +74,27 @@
     *ngIf="currentRestaurant.published"
     (click)="updatePublished(false)"
   >
-    UnPublish
+    No publicar
   </button>
   <button
     *ngIf="!currentRestaurant.published"
     class="badge badge-primary mr-2"
     (click)="updatePublished(true)"
   >
-    Publish
+    Publicar
   </button>
 
   <button class="badge badge-danger mr-2" (click)="deleteRestaurant()">
-    Delete
+    Borrar
   </button>
 
   <button type="submit" class="badge badge-success" (click)="updateRestaurant()">
-    Update
+    Actualizar
   </button>
   <p>{{ message }}</p>
 </div>
 
 <div *ngIf="!currentRestaurant">
   <br />
-  <p>Cannot access this Tutorial...</p>
+  <p>No puedes acceder a este restaurante...</p>
 </div>

@@ -1,3 +1,13 @@
+/* #26f5ef aqua
+
+#ff2c55 rosado */
+
+.back-add{
+  background: rgb(38,245,239);
+  background: linear-gradient(90deg, rgba(38,245,239,1) 0%, rgba(255,44,85,1) 35%, rgba(0,0,0,1) 100%);
+}
+
+
 .submit-form {
   max-width: 300px;
   margin: auto;

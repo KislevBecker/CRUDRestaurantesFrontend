@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search by title"
+        placeholder="Buscar por nombre"
         [(ngModel)]="name"
       />
       <div class="input-group-append">
@@ -13,13 +13,13 @@
           type="button"
           (click)="searchName()"
         >
-          Search
+          Buscar
         </button>
       </div>
     </div>
   </div>
   <div class="col-md-6">
-    <h4>Tutorials List</h4>
+    <h4>Lista de restaurantes</h4>
     <ul class="list-group">
       <li
         class="list-group-item"
@@ -32,14 +32,14 @@
     </ul>
 
     <button class="m-3 btn btn-sm btn-danger" (click)="removeAllRestaurants()">
-      Remove All
+      Eliminarlos todos
     </button>
   </div>
   <div class="col-md-6">
     <div *ngIf="currentRestaurant">
-      <h4>Tutorial</h4>
+      <h4>Restaurante</h4>
       <div>
-        <label><strong>Title:</strong></label> {{ currentRestaurant.name }}
+        <label><strong>Name:</strong></label> {{ currentRestaurant.name }}
       </div>
       <div>
         <label><strong>Logo:</strong></label>
@@ -63,7 +63,7 @@
       </div>
       <div>
         <label><strong>Status:</strong></label>
-        {{ currentRestaurant.published ? "Published" : "Pending" }}
+        {{ currentRestaurant.published ? "Publicado" : "Pendiente" }}
       </div>
 
       <a class="badge badge-warning" routerLink="/restaurants/{{ currentRestaurant.id }}">
@@ -73,7 +73,7 @@
 
     <div *ngIf="!currentRestaurant">
       <br />
-      <p>Please click on a Tutorial...</p>
+      <p>Haz click sobre un restaurante...</p>
     </div>
   </div>
 </div>
