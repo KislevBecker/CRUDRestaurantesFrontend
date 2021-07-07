@@ -1,104 +1,64 @@
 <div class="row">
   <div class="col-md-6 col-sm-12 colxs-12">
     <div class="card">
-        <div class="submit-form mt-3 mb-3">
-          <div *ngIf="!submitted">
-            <div class="form-group form-conteiner mb-3">
-              <input
-                type="text"
-                class="form__input"
-                id="name"
-                required
-                [(ngModel)]="restaurant.name"
-                name="name"
-                autocomplete="off" placeholder=" "
-              />
-              <label for="name" class="form__label">Name</label>
-            </div>
-        
-            <div class="form-group form-conteiner mb-3">
-              <input
-                class="form__input"
-                id="logo"
-                type="file"
-                required
-                [(ngModel)]="restaurant.logo"
-                name="logo" autocomplete="off" placeholder=" "
-              />
-              <label for="logo" class="form__label">Logo</label>
-            </div>
-            <div class="form-group form-conteiner mb-3">
-              <input
-              class="form__input"
-              type="date"
-                id="date"
-                required
-                [(ngModel)]="restaurant.date"
-                name="description"
-                autocomplete="off" placeholder=" "
-              />
-              <label for="description" class="form__label">Date</label>
-            </div>
-            <div class="form-group form-conteiner mb-3">
-              <input
-              class="form__input"
-                id="ownerName"
-                required
-                [(ngModel)]="restaurant.ownerName"
-                name="ownerName"
-                autocomplete="off" placeholder=" "
-              />
-              <label for="description" class="form__label">owner</label>
-            </div>
-            <div class="form-group form-conteiner mb-3">
-              <textarea
-              class="form__input"
-                id="address"
-                required
-                [(ngModel)]="restaurant.address"
-                name="address"
-                autocomplete="off" placeholder=" "
-                ></textarea>
-              <label for="description" class="form__label">Address</label>
-            </div>
-            <div class="form-group form-conteiner mb-3">
-              <!-- <input
-              class="form__input"
-                id="restaurantType"
-                required
-                [(ngModel)]="restaurant.restaurantType"
-                name="restaurantType"
-                autocomplete="off" placeholder=" "
-              /> -->
-              <select
-              class="form__input"
-                id="restaurantType"
-                required
-                [(ngModel)]="restaurant.restaurantType"
-                name="restaurantType"
+      <div class="submit-form mt-3 mb-3">
+        <div *ngIf="!submitted">
+          <div class="form-group form-conteiner mb-3">
+            <input type="text" class="form__input" id="name" required [(ngModel)]="restaurant.name" name="name"
+              autocomplete="off" placeholder=" " />
+            <label for="name" class="form__label">Nombre del restaurante</label>
+          </div>
 
-              >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            </select>
-              <label for="description" class="form__label">restaurantType</label>
-            </div>
-            <button (click)="saveRestaurant()" class="btn btn-success">Submit</button>
+          <div class="form-group form-conteiner mb-4">
+            <input class="form__input__file" id="logo" type="file" required [(ngModel)]="restaurant.logo" name="logo"
+              autocomplete="off" placeholder=" " />
+            <label for="logo" class="form__label__file">Logo</label>
           </div>
-        
-          <div *ngIf="submitted">
-            <h4>You submitted successfully!</h4>
-            <button class="btn btn-success" (click)="newRestaurant()">Add</button>
+          <div class="form-group form-conteiner mb-3">
+            <input class="form__input" type="date" id="datePublish" required [(ngModel)]="restaurant.datePublish" name="datePublish"
+              autocomplete="off" placeholder=" " />
+            <label for="description" class="form__label">Fecha de publicación</label>
           </div>
+          <div class="form-group form-conteiner mb-3">
+            <input class="form__input" id="ownerName" required [(ngModel)]="restaurant.ownerName" name="ownerName"
+              autocomplete="off" placeholder=" " />
+            <label for="description" class="form__label">Nombre del dueño</label>
+          </div>
+          <div class="form-group form-conteiner mb-5r">
+            <textarea class="form__input__textarea" id="addressRestaurant" required [(ngModel)]="restaurant.addressRestaurant"
+              name="addressRestaurant" autocomplete="off" placeholder=" "></textarea>
+            <label for="description" class="form__label__textarea">Dirección</label>
+          </div>
+          <div class="mb-3" >
+            <ng-multiselect-dropdown [placeholder]="'Seleccione tipo de restaurante'" [settings]="dropdownSettings"
+            name="restaurantType" id="restaurantType" class="mb-3"
+            [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+          <div class="mb-3" >
+            <ng-multiselect-dropdown [placeholder]="'Seleccione el menú'" [settings]="dropdown2Settings"
+            name="menu" id="menu"  class="mb-3"
+            [data]="dropdownList" [(ngModel)]="selectedItems2" (onSelect)="onItem2Select($event)"
+              (onSelectAll)="onSelect2All($event)">
+            </ng-multiselect-dropdown>
+          </div>
+            
+          <button (click)="saveRestaurant()" class="btn btn-success">Crear restaurante</button>
         </div>
-     
+
+        <div *ngIf="submitted">
+          <h4>Restaurante creado exitosamente!</h4>
+          <button class="btn btn-success" (click)="newRestaurant()">Agregar otro</button>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="col-6 back-add text-center text-white d-none d-sm-block d-sm-none d-md-block">
-    <h1 class="mt-5 animate__bounce">¡Agrega más restaurantes!</h1>
+    <h1 class="mt-9 animate__bounce">¡Agrega más restaurantes!</h1>
     <p>No encuentras algún restaurante? puedes agregarlo en este formulario, recuerda que todos los
-campos son obligatorios asi que debes tener a la mano todos los datos e imagenes
+      campos son obligatorios asi que debes tener a la mano todos los datos e imagenes
 
     </p>
   </div>

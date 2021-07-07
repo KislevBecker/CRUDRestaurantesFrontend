@@ -2,3 +2,143 @@
   height: 80px;
   width: 80px;
 }
+
+/* #26f5ef aqua
+
+#ff2c55 rosado */
+
+.back-add{
+  background: rgb(38,245,239);
+  background: linear-gradient(90deg, rgba(38,245,239,1) 0%, rgba(255,44,85,1) 35%, rgba(0,0,0,1) 100%);
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+.mt-9{
+  margin-top: 13rem !important;
+}
+
+.submit-form, .edit-form {
+  max-width: 300px;
+  margin: auto;
+  }
+
+  .form-conteiner {
+    position: relative;
+    width: 20rem;
+    height: 3rem;
+  }
+  .form__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e1e5ee;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: black;
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+    /* Change border when input focus*/
+  }
+
+  .form__input__file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 121%;
+    border: 2px solid #e1e5ee;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    color: black;
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+}
+
+
+
+  .form__input:hover {
+    border-color: #adffff;
+  }
+  .form__input:focus {
+    border-color: #18ffff;
+  }
+  .form__label {
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+    padding: 0 0.5rem;
+    color: black;
+    font-weight: bold;
+    cursor: text;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    background-color: white;
+  }
+
+  .form__label__file {
+    position: absolute;
+    left: 1rem;
+    top: -0.2rem;
+    padding: 0 0.5rem;
+    color: black;
+    font-weight: bold;
+    cursor: text;
+    -webkit-transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    background-color: white;
+}
+.form__input__textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  border: 2px solid #e1e5ee;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  color: black;
+  outline: none;
+  padding: 1.25rem;
+  background: none;
+}  
+
+
+.form__label__textarea {
+    position: absolute;
+    left: 1rem;
+    top: -0.7rem;
+    padding: 0 0.5rem;
+    color: black;
+    font-weight: bold;
+    cursor: text;
+    -webkit-transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    background-color: white;
+}
+
+
+.mb-5r {
+  margin-bottom: 5rem!important;
+}
+
+
+  /* 
+  1. When the input is in the focus state
+  reduce the size of the label and move upwards 
+  
+  2. Keep label state when content is in input field 
+  */
+  .form__input:focus ~ .form__label,
+  .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label,
+  .form__input__file:focus ~ .form__label__file,
+  .form__input__file:not(:placeholder-shown).form__input__file:not(:focus) ~ .form__label__file {
+    top: -0.5rem;
+    font-size: 0.8rem;
+    left: 0.8rem;
+  }

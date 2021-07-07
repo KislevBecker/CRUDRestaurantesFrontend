@@ -10,23 +10,23 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {
+  getRestaurant() {
     return this.http.get(baseUrl);
   }
 
-  get(id) {
+  getOneRestaurant(id) {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(data) {
+  createRestaurant(data) {
     return this.http.post(baseUrl, data);
   }
 
-  update(id, data) {
+  updateRestaurant(id, data) {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  delete(id) {
+  deleteRestaurant(id) {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 

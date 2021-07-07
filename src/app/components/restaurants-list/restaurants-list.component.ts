@@ -20,7 +20,7 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   retrieveRestaurants() {
-    this.restaurantService.getAll()
+    this.restaurantService.getRestaurant()
       .subscribe(
         data => {
           this.restaurants = data;

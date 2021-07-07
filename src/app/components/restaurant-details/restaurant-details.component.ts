@@ -1,28 +1,88 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantTypeService } from 'src/app/services/restaurant-type.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { MenuService } from 'src/app/services/menu.service';
+
 
 @Component({
   selector: 'app-restaurant-details',
   templateUrl: './restaurant-details.component.html',
-  styleUrls: ['./restaurant-details.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class RestaurantDetailsComponent implements OnInit {
   currentRestaurant = null;
+  currentRestaurantType = null;
+  currentMenu= null;
   message = '';
 
   constructor(
     private restaurantService: RestaurantService,
+    private restaurantTypeService: RestaurantTypeService,
+    private menuService: MenuService,
     private route: ActivatedRoute,
     private router: Router) { }
 
+
+    dropdownList = [];
+    dropdownList2 = [];
+    selectedItems = [];
+    selectedItems2 = [];
+    dropdownSettings: IDropdownSettings;
+    dropdown2Settings: IDropdownSettings;
   ngOnInit() {
     this.message = '';
-    this.getTutorial(this.route.snapshot.paramMap.get('id'));
+    this.getRestaurant(this.route.snapshot.paramMap.get('id'));
+    this.getRestaurantType();
+    this.getMenu(this.route.snapshot.paramMap.get('id'));
+
+
+      // this.dropdownList = this.restaurantType.getAll;
+    // this.dropdownList2  = this.menu.getAll;
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Seleccionar todos',
+      unSelectAllText: 'Eliminar todas las selecciones',
+      searchPlaceholderText: 'Buscar',
+      noDataAvailablePlaceholderText: 'Dato no disponible',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+    
+    this.dropdown2Settings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Seleccionar todos',
+      unSelectAllText: 'Eliminar todas las selecciones',
+      searchPlaceholderText: 'Buscar',
+      noDataAvailablePlaceholderText: 'Dato no disponible',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
 
-  getTutorial(id) {
-    this.restaurantService.get(id)
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
+  onItem2Select(item: any) {
+    console.log(item);
+  }
+  onSelect2All(items: any) {
+    console.log(items);
+  }
+  
+
+  getRestaurant(id) {
+    this.restaurantService.getOneRestaurant(id)
       .subscribe(
         data => {
           this.currentRestaurant = data;
@@ -33,18 +93,45 @@ export class RestaurantDetailsComponent implements OnInit {
         });
   }
 
+
+  getRestaurantType() {
+    this.restaurantTypeService.getRestaurantTypes()
+      .subscribe(
+        data => {
+          this.currentRestaurantType = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  getMenu(typeid) {
+    this.menuService.getMenu()
+    .subscribe(
+      data => {
+        this.currentMenu = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+
+
   updatePublished(status) {
     const data = {
       name: this.currentRestaurant.name,
       logo: this.currentRestaurant.logo,
-      date: this.currentRestaurant.date,
+      datePublish: this.currentRestaurant.datePublish,
       ownerName: this.currentRestaurant.ownerName,
-      address: this.currentRestaurant.address,
+      addressRestaurant: this.currentRestaurant.addressRestaurant,
       restaurantType: this.currentRestaurant.restaurantType,
       published: status
     };
 
-    this.restaurantService.update(this.currentRestaurant.id, data)
+    this.restaurantService.updateRestaurant(this.currentRestaurant.id, data)
       .subscribe(
         response => {
           this.currentRestaurant.published = status;
@@ -56,7 +143,7 @@ export class RestaurantDetailsComponent implements OnInit {
   }
 
   updateRestaurant() {
-    this.restaurantService.update(this.currentRestaurant.id, this.currentRestaurant)
+    this.restaurantService.updateRestaurant(this.currentRestaurant.id, this.currentRestaurant)
       .subscribe(
         response => {
           console.log(response);
@@ -68,7 +155,7 @@ export class RestaurantDetailsComponent implements OnInit {
   }
 
   deleteRestaurant() {
-    this.restaurantService.delete(this.currentRestaurant.id)
+    this.restaurantService.deleteRestaurant(this.currentRestaurant.id)
       .subscribe(
         response => {
           console.log(response);
